@@ -92,20 +92,20 @@ app.get('/item', function (req, res) {
     let type = req.query.type;
     console.log(id, type)
     if (type == "tea_and_honey"){
-        console.log('1')
+       
         item1 = tea_and_honey[id];
         another = tea_and_honey;
     } else if (type == "popular"){
         item1 = popular[id];
         another = popular;
-        console.log('2')
+        
     }
     
     if (!item1){
         console.log(`404`)
         res.render(`404`);
     } else{
-        console.log(another[id])
+       
         res.render(`item`, 
             {item1:item1, 
             another:another}
@@ -122,7 +122,7 @@ app.get('/sect', function (req, res) {
     }
     let type = req.query.type;
     what_is_ch[type]=true;
-    console.log(what_is_ch[type], what_is_ch)
+    
     res.render(`index1`,
     {
         what_is_ch: what_is_ch,
@@ -130,5 +130,6 @@ app.get('/sect', function (req, res) {
         tea_and_honey:tea_and_honey
     }
     )
-
+    
+    // 4 ★
 })
