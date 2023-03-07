@@ -55,3 +55,42 @@ a{
 h4{
     margin: 20px;
 }
+
+/* .npk{
+    gap: 2%;
+    padding: 10px;
+}
+
+.name{
+    height: 40%;
+    margin:2% 0;
+}
+
+.a{
+    text-align: center;
+} */
+.npk{
+    gap: 2%;
+    
+}
+
+.name{
+    height: 20%;
+    margin: 0 0 2% 0;
+}
+
+.a{
+    height: 70%;
+}
+
+form{
+    margin-bottom: 100px;
+}
+
+.reviews .card{
+    border: 1px solid rgba(0, 0, 0, 0.1) ;
+    border-radius: 0;
+    width: 100%;
+    margin:0;
+}
+

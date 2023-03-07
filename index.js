@@ -90,7 +90,7 @@ app.get('/', function (req, res) {
 app.get('/item', function (req, res) {
     let id = req.query.id;
     let type = req.query.type;
-    console.log(id, type)
+   
     if (type == "tea_and_honey"){
        
         item1 = tea_and_honey[id];
@@ -131,5 +131,5 @@ app.get('/sect', function (req, res) {
     }
     )
     
-    // 4 ★
+    // 4 ★  ☆☆
 })
