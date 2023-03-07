@@ -1,0 +1,24 @@
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card{
+    border: none;
+}
+
+main h2{
+    margin: 60px 0px 40px 0px;
+}
+
+main h2:hover{
+    color: gray;
+}
+
+main a{
+    color:black;
+    text-decoration: none;
+}
+
