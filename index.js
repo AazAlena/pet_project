@@ -20,7 +20,8 @@ popular=[
         "price": "$55.00",
         "type": "popular",
         "1full_description":faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
     },
     {
         "img":"assets/Subscription_2.webp",
@@ -28,7 +29,8 @@ popular=[
         "price": "$55.00",
         "type": "popular",
         "1full_description": faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
 
     },
     {
@@ -37,7 +39,8 @@ popular=[
         "price": "$55.00",
         "type": "popular",
         "1full_description": faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
     },
 
 ]
@@ -49,7 +52,8 @@ tea_and_honey=[
         "price": "$15.00",
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
     },
     {
         "img":"assets/Pantry_2.webp",
@@ -57,7 +61,8 @@ tea_and_honey=[
         "price": "$8.00",
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
     },
     {
         "img":"assets/Pantry_3.webp",
@@ -65,7 +70,8 @@ tea_and_honey=[
         "price": "$8.00",
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
     },
     {
         "img":"assets/Pantry_3.webp",
@@ -73,7 +79,8 @@ tea_and_honey=[
         "price": "$10.00",
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
-        "2full_description": faker.commerce.productDescription()
+        "2full_description": faker.commerce.productDescription(),
+        "comments": []
     },
 ]
 
@@ -90,27 +97,48 @@ app.get('/', function (req, res) {
 app.get('/item', function (req, res) {
     let id = req.query.id;
     let type = req.query.type;
-   
+
+    let name = req.query.name;
+    let adress = req.query.adress;
+    let title = req.query.title;
+    let content = req.query.content;
+    let TF = req.query.TF;
+    
     if (type == "tea_and_honey"){
-       
         item1 = tea_and_honey[id];
         another = tea_and_honey;
+
+        
     } else if (type == "popular"){
         item1 = popular[id];
         another = popular;
         
     }
-    
+    if (TF == `1`){
+        item1.comments.push(
+            {
+                name:name,
+                adress:adress,
+                title:title,
+                content:content
+
+            }
+        )
+    }
+
     if (!item1){
         console.log(`404`)
         res.render(`404`);
     } else{
        
         res.render(`item`, 
-            {item1:item1, 
-            another:another,
-           
-        }
+            {
+                item1:item1, 
+                id:id,
+                another:another,
+                type:type,
+                
+            }
             
         );
     }

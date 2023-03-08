@@ -14,7 +14,7 @@
 <body>
     <header class="">
         <nav class="container navbar navbar-expand-lg navbar-light my_for_navbar">
-            <a class="navbar-brand" href="http://localhost:3000/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
+            <a class="navbar-brand" href="http://localhost:3005/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +22,7 @@
                 <ul class="navbar-nav">
                 <li class="main nav-item ">
                     {{!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                    <a class="nav-link" href="#">SHOP</a>
+                    <a class="nav-link" href="http://localhost:3005">SHOP</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Subscriptions</a>
@@ -68,106 +68,63 @@
                 </div>
                 
             </div>
-
-            
-        {{!-- <div class="container"> 
-            <form action="/create" method="post">
+        
+            <hr style="margin-top: 20px;">
+            <h4>Another items</h4>
+            <div class="row row-cols-6 cont_for_item" >
+                {{#each another}}
+                <a href="/item?i={{this.type}}&id={{@index}}">
+                    <div class="col card" >
+                        <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.name}}</h5>
+                            <p class="">{{this.price}}</p>   
+                        </div>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+       
+            <hr>
+            <h4>Отзывы</h4>
+            <div class="container"> 
                 
+                <form action="/item" method="get">
+                    <b>Написать свой отзыв</b>
                     <div class="card-body">
                         
-                        <div class="row mb-3 npk">
+                        <div class="row npk">
                             <div class="col">
-                                <input type="text" name="title" class="row form-control name" placeholder="Ваше имя">
-                                <input type="adress" name="title" class="row form-control name" placeholder="Ваша почта">
+                                <input type="hidden" name="id" class="row form-control name" placeholder="id" value="{{id}}">
+                                <input type="hidden" name="type" class="row form-control name" placeholder="type" value="{{type}}">
+                                <input type="hidden" name="TF" class="row form-control name" placeholder="type" value="1">
+                                <input type="text" name="name" class="row form-control name" placeholder="Ваше имя">
+                                <input type="adress" name="adress" class="row form-control name" placeholder="Ваша почта">
+                                
+                                <input type="number" id="numer_stars" name="number" class="row form-control name" placeholder="Уровень качества" min="0" max="5">
+                                <p class="row name" style="font-size: 30px;" id="stars">☆☆☆☆☆</p>
                             </div>
                             <div class="col">
-                                <input type="number" name="title" class="tow form-control name" placeholder="Уровень качества" min="1" max="5">
-                                <p class="col" style="font-size: 30px;" id="stars">☆☆☆☆☆</p>
+                                <textarea name="content" type="text" class="form-control" rows="5"></textarea>
                             </div>
                         </div>
-                
-                       
-                        <div class="mb-3">
-                            <textarea name="content" type="text" class="form-control" rows="5"></textarea>
-                        </div>
-                        
                         <button type="submit" class="btn btn-primary">Добавить</button>
                     </div>
-                
-            </form>
-
-        </div> --}}
-        
-        <hr style="margin-top: 20px;">
-        <h4>Another items</h4>
-        <div class="row row-cols-6 cont_for_item" >
-            {{#each another}}
-            <a href="/item?i={{this.type}}&id={{@index}}">
-                <div class="col card" >
-                    <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{this.name}}</h5>
-                        <p class="">{{this.price}}</p>   
-                    </div>
+                </form>
+                <div class="reviews">
+                    {{#each item1.comments}}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span>{{this.name}}</span>
+                                <span>{{this.adress}}</span>
+                            </h5>
+                            <p style="opacity: .3;">{{this.number}}</p>
+                            <p class="card-text">{{this.content}}</p>
+                        </div>
+                    </div>  
+                    {{/each}}        
                 </div>
-            </a>
-            {{/each}}
-        </div>
-
-        <hr>
-        <h4>Отзывы</h4>
-        <div class="container"> 
-            
-            {{!-- <form action="/create" method="post">
-                <b>Написать свой отзыв</b>
-                <div class="card-body">
-                   
-                    <div class="row npk">
-                        <div class="col">
-                            <input type="text" name="title" class="row form-control name" placeholder="Ваше имя">
-                            <input type="adress" name="title" class="row form-control name" placeholder="Ваша почта">
-                            
-                            <input type="number" name="title" class="row form-control name" placeholder="Уровень качества" min="1" max="5">
-                            <p class="row name" style="font-size: 30px;" id="stars">☆☆☆☆☆</p>
-                        </div>
-                        <div class="col">
-                            <textarea name="content" type="text" class="form-control" rows="5"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Добавить</button>
-                </div>
-            </form> --}}
-            <form action="/item" method="get">
-                <b>Написать свой отзыв</b>
-                <div class="card-body">
-                    
-                    <div class="row npk">
-                        <div class="col">
-                            <input type="text" name="name" class="row form-control name" placeholder="Ваше имя">
-                            <input type="adress" name="adress" class="row form-control name" placeholder="Ваша почта">
-                            
-                            <input type="number" id="numer_stars" name="number" class="row form-control name" placeholder="Уровень качества" min="0" max="5">
-                            <p class="row name" style="font-size: 30px;" id="stars">☆☆☆☆☆</p>
-                        </div>
-                        <div class="col">
-                            <textarea name="content" type="text" class="form-control" rows="5"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Добавить</button>
-                </div>
-            </form>
-            <div class="reviews">
-                {{!-- {{#each notes}} --}}
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>{{text}}</span>
-                        </h5>
-                        <p style="opacity: .3;">{{number}}</p>
-                        <p class="card-text">{{content}}</p>
-                    </div>
-                </div>  
-                {{!-- {{/each}}         --}}
             </div>
         </div>
     </main>
