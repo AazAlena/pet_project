@@ -108,7 +108,9 @@ app.get('/item', function (req, res) {
        
         res.render(`item`, 
             {item1:item1, 
-            another:another}
+            another:another,
+           
+        }
             
         );
     }
@@ -133,3 +135,27 @@ app.get('/sect', function (req, res) {
     
     // 4 ★  ☆☆
 })
+
+// let list_rev = []
+// app.get('/create', function (req, res) {
+    
+//     let name = req.query.name;
+//     let adress = req.query.adress;
+//     let title = req.query.title;
+//     let content = req.query.content;
+
+//     list_rev.push(
+//         {
+//             name:name,
+//             adress:adress,
+//             title:title,
+//             content:content
+
+//         }
+//     )
+//     res.render(`item`,
+//     {
+//         list_rev:list_rev
+//     }
+//     )
+// })

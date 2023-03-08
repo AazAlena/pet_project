@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/item.css">
+    <script src="js/item.js" defer></script>
     <!-- <meta http-equiv="refresh" content="5"> -->
 </head>
 <body>
@@ -117,10 +118,10 @@
         <h4>Отзывы</h4>
         <div class="container"> 
             
-            <form action="/create" method="post">
+            {{!-- <form action="/create" method="post">
                 <b>Написать свой отзыв</b>
                 <div class="card-body">
-                    {{!-- Название --}}
+                   
                     <div class="row npk">
                         <div class="col">
                             <input type="text" name="title" class="row form-control name" placeholder="Ваше имя">
@@ -135,17 +136,35 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Добавить</button>
                 </div>
+            </form> --}}
+            <form action="/item" method="get">
+                <b>Написать свой отзыв</b>
+                <div class="card-body">
+                    
+                    <div class="row npk">
+                        <div class="col">
+                            <input type="text" name="name" class="row form-control name" placeholder="Ваше имя">
+                            <input type="adress" name="adress" class="row form-control name" placeholder="Ваша почта">
+                            
+                            <input type="number" id="numer_stars" name="number" class="row form-control name" placeholder="Уровень качества" min="0" max="5">
+                            <p class="row name" style="font-size: 30px;" id="stars">☆☆☆☆☆</p>
+                        </div>
+                        <div class="col">
+                            <textarea name="content" type="text" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Добавить</button>
+                </div>
             </form>
-
             <div class="reviews">
                 {{!-- {{#each notes}} --}}
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <span>bvz</span>
+                            <span>{{text}}</span>
                         </h5>
-                        <p style="opacity: .3;">hjk</p>
-                        <p class="card-text">rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
+                        <p style="opacity: .3;">{{number}}</p>
+                        <p class="card-text">{{content}}</p>
                     </div>
                 </div>  
                 {{!-- {{/each}}         --}}
