@@ -6,6 +6,7 @@ app.set('views', 'views');
 app.set('view engine', 'hbs');
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }))
 let { faker } = require(`@faker-js/faker`);
 
 
@@ -97,15 +98,15 @@ app.get('/', function (req, res) {
     )
 })
 
-app.get('/item', function (req, res) {
-    let id = req.query.id;
-    let type = req.query.type;
+app.post('/item', function (req, res) {
+    let id = req.body.id;
+    let type = req.body.type;
 
-    let name = req.query.name;
-    let adress = req.query.adress;
-    let title = req.query.title;
-    let content = req.query.content;
-    let TF = req.query.TF;
+    let name = req.body.name;
+    let adress = req.body.adress;
+    let title = req.body.title;
+    let content = req.body.content;
+    let TF = req.body.TF;
     
     if (type == "tea_and_honey"){
         item1 = tea_and_honey[id];
