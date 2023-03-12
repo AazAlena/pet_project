@@ -8,11 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/item.css">
-    <script src="js/item.js" defer></script>
+    <script src="JS/item.js" defer></script>
     <!-- <meta http-equiv="refresh" content="5"> -->
 </head>
 <body>
-    <header class="">
+    <header>
         <nav class="container navbar navbar-expand-lg navbar-light my_for_navbar">
             <a class="navbar-brand" href="http://localhost:3005/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,10 +45,46 @@
         
     </header>
 
-    <main class="">
+    <main>
+        <section class="sidebar hidden">
+            
+            <h5 class="continue_shopping"> Continue shopping</h5>
+            <hr style="margin:0px 0px 25px 0px;">
+            <div classs="row">
+                <div class="col" style="font-weight: 500; font-size: 24px;">Your Order</div>
+            </div>
+            <div class="row">
+                <div class="col" style="font-weight: 450; font-size: 20px">Subtotal:</div>
+                <div class="col" style="font-weight: 650; font-size: 25px; text-align:end;">{{item1.price}}</div>
+            </div>
+            <div class="col">
+                <div class="row" style="margin-bottom:5px;"><button  class="in_cart">CART</button></div>
+                <div class="row"><button class="in_cart">Checkout</button></div>
+            </div>
+            <hr style="margin:25px 0px 15px 0px;">
+            <div classs="row row-cols-2" style="display:flex; margin:0px 0px 15px 0px;">
+                <div class="col" style="font-weight: 600; font-size: 26px;">Products</div>
+                <div class="col open_close"><button class="btn_opem_close"> ▼ </button></div> 
+                {{!-- ▲ --}}
+                {{!-- <div class="col open_close btn_opem_close">b</div> --}}
+            </div>
+            <div class="col" id="sp_p_in_soplist">
+                <div class="card">
+                    <div class="row" style="padding: 5px">
+                        <img class="col card-img-top" src="{{item1.img}}" alt="">
+                    </div>
+                    <div class="col card-body">
+                        <h5 class="card-title">{{item1.name}}</h5>
+                        <p class="card-text">{{item1.price}}</p>
+                        <a href="#" class="in_cart">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
         <div class="container">
             <div class=" row row-cols-md-2 g-2% os">
-                
                 <div class="col" style="flex-basis:60%">
                     <img src={{item1.img}} alt="" class="images">
                 </div>
@@ -59,7 +95,8 @@
                     </div>
                     <h2 style="margin:20px 0px">{{item1.name}}</h2>
                     <p style="margin:20px 0px">{{item1.price}}</p>
-                    <button class="to_cart" style="margin:20px 0px">ADD TO CART</button>
+                    {{!-- <a href="/item?type=popular&id=1"><button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button></a> --}}
+                    <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
                     <hr class="hr2" style="margin:20px 0px">
                     <div>
                         <p style="font-weight: 700;">{{item1.1full_description}}</p>
@@ -71,7 +108,7 @@
         
             <hr style="margin-top: 20px;">
             <h4>Another items</h4>
-            <div class="row row-cols-6 cont_for_item" >
+            <div class="row row-cols-lg-6 row-cols-3 cont_for_item" >
                 {{#each another}}
                 <a href="/item?i={{this.type}}&id={{@index}}">
                     <div class="col card" >
@@ -85,7 +122,7 @@
                 {{/each}}
             </div>
        
-            <hr>
+            <hr style="margin-top:15px;">
             <h4>Отзывы</h4>
             <div class="container"> 
                 

@@ -84,6 +84,9 @@ tea_and_honey=[
     },
 ]
 
+purchases = [
+    
+]
 
 app.get('/', function (req, res) {
     res.render(`index`,
