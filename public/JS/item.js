@@ -1,5 +1,6 @@
 let stars = document.querySelector(`#stars`);
 let numer_stars = document.querySelector(`#numer_stars`);
+let purchases = []
 
 numer_stars.addEventListener(`input`, function(){
     p = numer_stars.value;
@@ -19,11 +20,17 @@ to_card.addEventListener(`click`, function(){
     if (to_card.innerHTML == `ADD TO CART`){
         to_card.innerHTML = `REMOVE FROM CART`;
         sidebar.classList.remove(`hidden`);
+        purchases.push(
+            {
+                item1:item1
+            }
+        )
     } else {
         to_card.innerHTML = `ADD TO CART`;
         sidebar.classList.remove(`hidden`);
     }
 })
+console.log(purchases)
 let continue_shopping = document.querySelector(`.continue_shopping`);
 continue_shopping.addEventListener(`click`, function(){
     sidebar.classList.add(`hidden`);

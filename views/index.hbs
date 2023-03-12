@@ -49,7 +49,7 @@
             <h2>Popular</h2>
             <div class="row row-cols-1 row-cols-3 cont_for_item">
                 {{#each popular}}
-                <a href="/item?type={{this.type}}&id={{@index}}">
+                {{!-- <a href="/item?type={{this.type}}&id={{@index}}">
                     <div class="col card">
                         <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
                         <div class="card-body">
@@ -57,7 +57,21 @@
                             <p class="">{{this.price}}</p>   
                         </div>
                     </div>
-                </a>
+                </a> --}}
+                <form action="/item" method="post">
+                    <a href="#"  onclick="parentNode.submit();">
+                        {{!-- /item?type={{this.type}}&id={{@index}} --}}
+                        <div class="col card">
+                            <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.name}}</h5>
+                                <p class="">{{this.price}}</p>   
+                            </div>
+                        </div>
+                    </a>
+                    <input type="hidden" name="type" value="{{this.type}}">
+                    <input type="hidden" name="id" value="{{@index}}">
+                </form>
                 {{/each}}
             </div>
         </section>

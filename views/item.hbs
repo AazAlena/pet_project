@@ -95,8 +95,8 @@
                     </div>
                     <h2 style="margin:20px 0px">{{item1.name}}</h2>
                     <p style="margin:20px 0px">{{item1.price}}</p>
-                    {{!-- <a href="/item?type=popular&id=1"><button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button></a> --}}
                     <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
+                    {{!-- <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button> --}}
                     <hr class="hr2" style="margin:20px 0px">
                     <div>
                         <p style="font-weight: 700;">{{item1.1full_description}}</p>
@@ -126,7 +126,7 @@
             <h4>Отзывы</h4>
             <div class="container"> 
                 
-                <form action="/item" method="get">
+                <form action="/item" method="post">
                     <b>Написать свой отзыв</b>
                     <div class="card-body">
                         
