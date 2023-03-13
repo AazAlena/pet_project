@@ -85,9 +85,7 @@ tea_and_honey=[
     },
 ]
 
-purchases = [
-    
-]
+let purchases = []
 
 app.get('/', function (req, res) {
     res.render(`index`,
@@ -108,10 +106,11 @@ app.post('/item', function (req, res) {
     let content = req.body.content;
     let TF = req.body.TF;
     
+    let ari = req.body.add_or_remove_item;
+
     if (type == "tea_and_honey"){
         item1 = tea_and_honey[id];
         another = tea_and_honey;
-
         
     } else if (type == "popular"){
         item1 = popular[id];
@@ -130,6 +129,12 @@ app.post('/item', function (req, res) {
         )
     }
 
+    // if (ari=="+"){
+    //     purchases.push(item1)
+    //     console.log(purchases, item1)
+    // }
+    // console.log(purchases, item1)
+
     if (!item1){
         console.log(`404`)
         res.render(`404`);
@@ -141,7 +146,7 @@ app.post('/item', function (req, res) {
                 id:id,
                 another:another,
                 type:type,
-                
+                purchases:purchases
             }
             
         );

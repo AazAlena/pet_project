@@ -16,18 +16,16 @@ numer_stars.addEventListener(`input`, function(){
 
 let sidebar = document.querySelector(`.sidebar`);
 let to_card = document.querySelector(`#ad_re_to_card`);
+let add_or_remove_item = document.querySelector(`.add_or_remove_item`);
 to_card.addEventListener(`click`, function(){
     if (to_card.innerHTML == `ADD TO CART`){
         to_card.innerHTML = `REMOVE FROM CART`;
         sidebar.classList.remove(`hidden`);
-        purchases.push(
-            {
-                item1:item1
-            }
-        )
+        add_or_remove_item.value = "-";
     } else {
         to_card.innerHTML = `ADD TO CART`;
         sidebar.classList.remove(`hidden`);
+        add_or_remove_item.value = "+";
     }
 })
 console.log(purchases)

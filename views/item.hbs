@@ -69,16 +69,18 @@
                 {{!-- <div class="col open_close btn_opem_close">b</div> --}}
             </div>
             <div class="col" id="sp_p_in_soplist">
+                {{#each purchases}}
                 <div class="card">
                     <div class="row" style="padding: 5px">
-                        <img class="col card-img-top" src="{{item1.img}}" alt="">
+                        <img class="col card-img-top" src="{{this.img}}" alt="">
                     </div>
                     <div class="col card-body">
-                        <h5 class="card-title">{{item1.name}}</h5>
-                        <p class="card-text">{{item1.price}}</p>
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.price}}</p>
                         <a href="#" class="in_cart">Go somewhere</a>
                     </div>
                 </div>
+                {{/each}}
             </div>
             
         </section>
@@ -95,7 +97,14 @@
                     </div>
                     <h2 style="margin:20px 0px">{{item1.name}}</h2>
                     <p style="margin:20px 0px">{{item1.price}}</p>
-                    <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
+                    <form action="/item" method="post">
+
+                        <a href="#" onclick="parentNode.submit();">
+                            <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
+                        </a>
+                        <input class="add_or_remove_item" type="name" name="add_or_remove_item" value="-">
+                        
+                    </form>
                     {{!-- <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button> --}}
                     <hr class="hr2" style="margin:20px 0px">
                     <div>
