@@ -146,6 +146,7 @@ app.post('/item', function (req, res) {
                 id:id,
                 another:another,
                 type:type,
+                
                 // purchases:purchases
             }
             
@@ -173,9 +174,9 @@ app.get('/sect', function (req, res) {
 })
 
 
-app.post('/buying', function (req, res) {
-    let id = req.body.id;
-    let type = req.body.type;
+app.get('/buying', function (req, res) {
+    let id = req.query.id;
+    let type = req.query.type;
 
     if (type == "tea_and_honey"){
         item1 = tea_and_honey[id];
@@ -187,12 +188,20 @@ app.post('/buying', function (req, res) {
     purchases.push(
         item1
     )
+    sum = 0;
+    for (i=0; i<purchases.length; i++){
+        price1 = purchases[i].price;
+        price1 = price1.substr(1)
+        sum += price1
+    }
     console.log(purchases)
     res.render(`buying`, 
         {
             item1:item1, 
             id:id,
             type:type,
+            purchases:purchases,
+            price1:price1
         }
             
     );
