@@ -1,6 +1,6 @@
 let express = require(`express`);
 let app = express();
-let port = 3005;
+let port = 3001;
 const hbs = require('hbs');
 app.set('views', 'views');
 app.set('view engine', 'hbs');
@@ -22,7 +22,8 @@ popular=[
         "type": "popular",
         "1full_description":faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
     },
     {
         "img":"assets/Subscription_2.webp",
@@ -31,7 +32,8 @@ popular=[
         "type": "popular",
         "1full_description": faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
 
     },
     {
@@ -41,7 +43,8 @@ popular=[
         "type": "popular",
         "1full_description": faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
     },
 
 ]
@@ -54,7 +57,8 @@ tea_and_honey=[
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
     },
     {
         "img":"assets/Pantry_2.webp",
@@ -63,7 +67,8 @@ tea_and_honey=[
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
     },
     {
         "img":"assets/Pantry_3.webp",
@@ -72,7 +77,8 @@ tea_and_honey=[
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
     },
     {
         "img":"assets/Pantry_3.webp",
@@ -81,7 +87,8 @@ tea_and_honey=[
         "type": "tea_and_honey",
         "1full_description": faker.commerce.productDescription(),
         "2full_description": faker.commerce.productDescription(),
-        "comments": []
+        "comments": [],
+        "buy": `Not bought`
     },
 ]
 
@@ -105,9 +112,7 @@ app.post('/item', function (req, res) {
     let title = req.body.title;
     let content = req.body.content;
     let TF = req.body.TF;
-    
-    let ari = req.body.add_or_remove_item;
-
+   
     if (type == "tea_and_honey"){
         item1 = tea_and_honey[id];
         another = tea_and_honey;
@@ -129,12 +134,7 @@ app.post('/item', function (req, res) {
         )
     }
 
-    // if (ari=="+"){
-    //     purchases.push(item1)
-    //     console.log(purchases, item1)
-    // }
-    // console.log(purchases, item1)
-
+    
     if (!item1){
         console.log(`404`)
         res.render(`404`);
@@ -146,7 +146,7 @@ app.post('/item', function (req, res) {
                 id:id,
                 another:another,
                 type:type,
-                purchases:purchases
+                // purchases:purchases
             }
             
         );
@@ -169,30 +169,75 @@ app.get('/sect', function (req, res) {
         tea_and_honey:tea_and_honey
     }
     )
-    
     // 4 ★  ☆☆
 })
 
-// let list_rev = []
-// app.get('/create', function (req, res) {
-    
-//     let name = req.query.name;
-//     let adress = req.query.adress;
-//     let title = req.query.title;
-//     let content = req.query.content;
 
-//     list_rev.push(
-//         {
-//             name:name,
-//             adress:adress,
-//             title:title,
-//             content:content
+app.post('/buying', function (req, res) {
+    let id = req.body.id;
+    let type = req.body.type;
 
-//         }
-//     )
-//     res.render(`item`,
-//     {
-//         list_rev:list_rev
-//     }
-//     )
-// })
+    if (type == "tea_and_honey"){
+        item1 = tea_and_honey[id];
+        
+    } else if (type == "popular"){
+        item1 = popular[id]; 
+    }
+    item1.buy = `Bought`;
+    purchases.push(
+        item1
+    )
+    console.log(purchases)
+    res.render(`buying`, 
+        {
+            item1:item1, 
+            id:id,
+            type:type,
+        }
+            
+    );
+})
+
+app.get('/admin', function (req, res) {
+
+    res.render(`admin`, {
+        popular:popular,
+        tea_and_honey:tea_and_honey
+    })
+})
+
+app.get('/add_item_admin', function (req, res) {
+    img = req.query.img;
+    namE = req.query.name;
+    price = req.query.price;
+    type = req.query.type;
+    if (type == "tea_and_honey"){
+        itea_and_honey.push(
+            {
+                "img": img,
+                "name": namE,
+                "price":'$'+price,
+                "type": type,
+                "1full_description":faker.commerce.productDescription(),
+                "2full_description": faker.commerce.productDescription(),
+                "comments": [],
+                "buy": `Not bought`
+            }
+        )
+    } else if (type == "popular"){
+        popular.push(
+            {
+                "img": img,
+                "name": namE,
+                "price":'$'+price,
+                "type": type,
+                "1full_description":faker.commerce.productDescription(),
+                "2full_description": faker.commerce.productDescription(),
+                "comments": [],
+                "buy": `Not bought`
+            }
+        )
+    }
+    res.redirect(`admin`)
+})
+//add_item_admin

@@ -12,6 +12,7 @@ numer_stars.addEventListener(`input`, function(){
     for (i=0; i<m; i++){
         stars.innerHTML += `☆`
     }
+    
 })
 
 let sidebar = document.querySelector(`.sidebar`);
@@ -21,22 +22,23 @@ to_card.addEventListener(`click`, function(){
     if (to_card.innerHTML == `ADD TO CART`){
         to_card.innerHTML = `REMOVE FROM CART`;
         sidebar.classList.remove(`hidden`);
-        add_or_remove_item.value = "-";
+        
     } else {
         to_card.innerHTML = `ADD TO CART`;
         sidebar.classList.remove(`hidden`);
-        add_or_remove_item.value = "+";
+       
     }
 })
-console.log(purchases)
+
+
 let continue_shopping = document.querySelector(`.continue_shopping`);
 continue_shopping.addEventListener(`click`, function(){
     sidebar.classList.add(`hidden`);
 })
 
-sp_p_in_soplist = document.querySelector(`#sp_p_in_soplist`); 
-btn_opem_close = document.querySelector(`.btn_opem_close`);
-btn_opem_close.addEventListener(`click`, function(){
-    sp_p_in_soplist.classList.toggle(`d-none`);
+let continue_shopping_in_card = document.querySelector(`.continue_shopping_in_card`);
+continue_shopping_in_card.addEventListener(`click`, function(){
+    sidebar.classList.add(`hidden`);
 })
+
 

@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
-    <!-- <meta http-equiv="refresh" content="5"> -->
+   
 </head>
 <body>
     <header class="">
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="main nav-item ">
-                    {{!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
+                    
                     <a class="nav-link" href="http://localhost:3005/#">SHOP</a>
                 </li>
                 <li class="nav-item">
@@ -33,7 +33,7 @@
                     <a class="nav-link" href="/sect?type=merch">Merch</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Disabled</a>
+                     <a class="nav-link" style="color:red; font-weight: 500; font-size: large;" href="/admin">Admin</a>
                 </li>
                 </ul>
                 <a class="navbar-brand" href="#"><img src="assets/" alt=""></a>
@@ -49,18 +49,9 @@
             <h2>Popular</h2>
             <div class="row row-cols-1 row-cols-3 cont_for_item">
                 {{#each popular}}
-                {{!-- <a href="/item?type={{this.type}}&id={{@index}}">
-                    <div class="col card">
-                        <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <p class="">{{this.price}}</p>   
-                        </div>
-                    </div>
-                </a> --}}
                 <form action="/item" method="post">
                     <a href="#" onclick="parentNode.submit();">
-                        {{!-- /item?type={{this.type}}&id={{@index}} --}}
+                        
                         <div class="col card">
                             <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
                             <div class="card-body">

@@ -34,7 +34,7 @@
                     <a class="nav-link" href="#">Merch</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Disabled</a>
+                     <a class="nav-link" style="color:red; font-weight: 500; font-size: large;" href="/admin">Admin</a>
                 </li>
                 </ul>
                 <a class="navbar-brand" href="#"><img src="assets/" alt=""></a>
@@ -58,17 +58,16 @@
                 <div class="col" style="font-weight: 650; font-size: 25px; text-align:end;">{{item1.price}}</div>
             </div>
             <div class="col">
-                <div class="row" style="margin-bottom:5px;"><button  class="in_cart">CART</button></div>
-                <div class="row"><button class="in_cart">Checkout</button></div>
+                <div class="row" style="margin-bottom:5px;"><button class="in_cart"><a href="/buying">Go to card</a></button></a></div>
+                <div class="row"><button class="in_cart continue_shopping_in_card">Continue Shopping</button></div>
             </div>
             <hr style="margin:25px 0px 15px 0px;">
-            <div classs="row row-cols-2" style="display:flex; margin:0px 0px 15px 0px;">
+            {{!-- <div classs="row row-cols-2" style="display:flex; margin:0px 0px 15px 0px;">
                 <div class="col" style="font-weight: 600; font-size: 26px;">Products</div>
                 <div class="col open_close"><button class="btn_opem_close"> ▼ </button></div> 
-                {{!-- ▲ --}}
-                {{!-- <div class="col open_close btn_opem_close">b</div> --}}
-            </div>
-            <div class="col" id="sp_p_in_soplist">
+                
+            </div> --}}
+            {{!-- <div class="col" id="sp_p_in_soplist">
                 {{#each purchases}}
                 <div class="card">
                     <div class="row" style="padding: 5px">
@@ -81,7 +80,7 @@
                     </div>
                 </div>
                 {{/each}}
-            </div>
+            </div> --}}
             
         </section>
 
@@ -97,15 +96,16 @@
                     </div>
                     <h2 style="margin:20px 0px">{{item1.name}}</h2>
                     <p style="margin:20px 0px">{{item1.price}}</p>
-                    <form action="/item" method="post">
+                    {{!-- <form action="/buying" method="post">
 
                         <a href="#" onclick="parentNode.submit();">
                             <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
                         </a>
-                        <input class="add_or_remove_item" type="name" name="add_or_remove_item" value="-">
-                        
-                    </form>
-                    {{!-- <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button> --}}
+                        <input type="hidden" name="id" class="row form-control name" placeholder="id" value="{{id}}">
+                        <input type="hidden" name="type" class="row form-control name" placeholder="type" value="{{type}}">
+                    </form> --}}
+                    <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
+                    
                     <hr class="hr2" style="margin:20px 0px">
                     <div>
                         <p style="font-weight: 700;">{{item1.1full_description}}</p>
@@ -162,11 +162,14 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <span>{{this.name}}</span>
-                                <span>{{this.adress}}</span>
+                                <div class="col">Имя: {{this.name}}</div>
+                                
                             </h5>
-                            <p style="opacity: .3;">{{this.number}}</p>
-                            <p class="card-text">{{this.content}}</p>
+                            <p class="row" style="font-size: 30px;" id="stars_in_com">    
+                                {{this.number}} Звёзд ★
+                            </p>
+                            
+                            <p class="card-text">Отзыв: {{this.content}}</p>
                         </div>
                     </div>  
                     {{/each}}        

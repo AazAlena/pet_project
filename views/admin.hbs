@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Star Treck</title>
+    <title>Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
-   
+    <!-- <meta http-equiv="refresh" content="5"> -->
 </head>
 <body>
     <header class="">
@@ -21,7 +21,7 @@
                 <ul class="navbar-nav">
                 <li class="main nav-item ">
                     {{!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                    <a class="nav-link" href="http://localhost:3005/">SHOP</a>
+                    <a class="nav-link" href="http://localhost:3005/#">SHOP</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/sect?type=popular">Popular</a>
@@ -33,7 +33,7 @@
                     <a class="nav-link" href="/sect?type=merch">Merch</a>
                 </li>
                 <li class="nav-item">
-                     <a class="nav-link" style="color:red; font-weight: 500; font-size: large;" href="/admin">Admin</a>
+                    <a class="nav-link" style="color:red; font-weight: 500; font-size: large;" href="/admin">Admin</a>
                 </li>
                 </ul>
                 <a class="navbar-brand" href="#"><img src="assets/" alt=""></a>
@@ -44,48 +44,48 @@
         
     </header>
 
-    <main>
+    <main class="container">
+        <form action="/add_item_admin" method="get">
+            <div class="row">
+                <div class="col"><input type="text" name="img" class="row form-control " placeholder="Адрес иззображения"></div>
+                <div class="col"><input type="text" name="name" class="row form-control " placeholder="Название товара"></div>
+                <div class="col"><input type="number" name="price" class="row form-control " placeholder="Цена товара"></div>
+                <div class="col"><input type="text" name="type" class="row form-control " placeholder="Тип товара"></div>
+                <div class="col"><button type="submit">Отправить</button></div>
+            </div>
+        </form>
+        <div class="col">
+            {{#each popular}}
+            
+            <div class="row row-cols-4">
+                <div class="col img"> <img src="{{this.img}}" style="width: 30px;" alt=""> </div>
+                <div class="col name">{{this.name}} </div>
+                <div class="col price">{{this.price}} </div>
+                
+                <div class="col buying">
+                    {{this.buy}}
+                </div>
+
+
+            </div>
         
-        {{#if what_is_ch.popular}}
-        <section class="container">
-            <h2>Popular</h2>
-            <div class="row row-cols-1 row-cols-3 cont_for_item">
-                {{#each popular}}
-                <a href="/item?type={{this.type}}&id={{@index}}">
-                    <div class="col card">
-                        <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <p class="">{{this.price}}</p>   
-                        </div>
-                    </div>
-                </a>
-                {{/each}}
+            {{/each}}
+
+            {{#each tea_and_honey}}
+            
+            <div class="row row-cols-4">
+                <div class="col img"> <img src="{{this.img}}" style="width: 30px;" alt=""> </div>
+                <div class="col name">{{this.name}} </div>
+                <div class="col price">{{this.price}} </div>
+                
+                <div class="col buying">
+                    {{this.buy}}
+                </div>
+
             </div>
-        </section>
-        {{/if}}
-        {{#if what_is_ch.tea_and_honey}}
-        <section class="container">
-            <h2>Tea and honey</h2>
-            <div class="row row-cols-1 row-cols-4 cont_for_item">
-                {{#each tea_and_honey}}
-                <a href="/item?type={{this.type}}&id={{@index}}">
-                    <div class="col card">
-                        <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <p class="">{{this.price}}</p>   
-                        </div>
-                    </div>
-                </a>
-                {{/each}}
-            </div>
-        </section>
-        {{/if}}
+           
+            {{/each}}
+        </div>
     </main>
-
-    <footer>
-
-    </footer>
 </body>
 </html>
