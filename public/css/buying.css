@@ -28,16 +28,13 @@
     .markup{
         display:none;
     }
+    .print_item_col_or_row{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 hr{
     color:black;
     opacity:1;
-}
-
-@media (max-width: 768px) { 
-    .print_item_col_or_row{
-        display: flex;
-        flex-direction: column;
-    }
 }
