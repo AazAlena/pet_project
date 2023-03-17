@@ -1,6 +1,5 @@
 let stars = document.querySelector(`#stars`);
 let numer_stars = document.querySelector(`#numer_stars`);
-let purchases = []
 
 numer_stars.addEventListener(`input`, function(){
     p = numer_stars.value;

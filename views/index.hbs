@@ -21,7 +21,7 @@
                 <ul class="navbar-nav">
                 <li class="main nav-item ">
                     
-                    <a class="nav-link" href="http://localhost:3005/#">SHOP</a>
+                    <a class="nav-link" href="http://localhost:3001/#">SHOP</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/sect?type=popular">Popular</a>
@@ -70,15 +70,21 @@
             <h2>Tea and honey</h2>
             <div class="row row-cols-1 row-cols-4 cont_for_item">
                 {{#each tea_and_honey}}
-                <a href="/item?type={{this.type}}&id={{@index}}">
-                    <div class="col card">
+                <form action="/item" method="post">
+                    <a href="#" onclick="parentNode.submit();">
+                        
+                        <div class="col card">
                         <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
                         <div class="card-body">
                             <h5 class="card-title">{{this.name}}</h5>
                             <p class="">{{this.price}}</p>   
                         </div>
                     </div>
-                </a>
+                    </a>
+                    <input type="hidden" name="type" value="{{this.type}}">
+                    <input type="hidden" name="id" value="{{@index}}">
+                </form>
+                
                 {{/each}}
             </div>
         </section>

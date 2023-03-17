@@ -1,0 +1,25 @@
+.paying{
+
+}
+
+.button_pay{
+    border: none;
+    color:black;
+    background-color: green;
+}
+
+.continue_shopping{
+    color:gray;
+    font-size: 20px;
+    margin:20px 0px;
+}
+.continue_shopping:hover{
+    text-decoration: none;
+    color:gray;
+}
+
+.dpqt{
+   
+    font-size: 18px;
+    margin:10px 0px;
+}
