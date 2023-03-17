@@ -40,4 +40,9 @@ continue_shopping_in_card.addEventListener(`click`, function(){
     sidebar.classList.add(`hidden`);
 })
 
+let open_close = document.querySelector(`.open_close`);
+let sp_p_in_soplist = document.querySelector(`#sp_p_in_soplist`);
+open_close.addEventListener(`click`, function(){
+    sp_p_in_soplist.classList.toggle(`d-none`);
+})
 

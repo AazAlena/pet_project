@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav class="container navbar navbar-expand-lg navbar-light my_for_navbar">
-            <a class="navbar-brand" href="http://localhost:3005/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
+            <a class="navbar-brand" href="http://localhost:3001/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -62,16 +62,16 @@
                 <div class="row"><button class="in_cart continue_shopping_in_card">Continue Shopping</button></div>
             </div>
             <hr style="margin:25px 0px 15px 0px;">
-            {{!-- <div classs="row row-cols-2" style="display:flex; margin:0px 0px 15px 0px;">
+            <div classs="row row-cols-2" style="display:flex; margin:0px 0px 15px 0px;">
                 <div class="col" style="font-weight: 600; font-size: 26px;">Products</div>
                 <div class="col open_close"><button class="btn_opem_close"> ▼ </button></div> 
                 
-            </div> --}}
-            {{!-- <div class="col" id="sp_p_in_soplist">
+            </div>
+            <div class="col" id="sp_p_in_soplist">
                 {{#each purchases}}
                 <div class="card">
-                    <div class="row" style="padding: 5px">
-                        <img class="col card-img-top" src="{{this.img}}" alt="">
+                    <div class="row" style="padding: 5px" >
+                        <img class="" src="{{this.img}}" alt="{{this.name}}">
                     </div>
                     <div class="col card-body">
                         <h5 class="card-title">{{this.name}}</h5>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 {{/each}}
-            </div> --}}
+            </div>
             
         </section>
 

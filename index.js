@@ -147,7 +147,7 @@ app.post('/item', function (req, res) {
                 another:another,
                 type:type,
                 
-                // purchases:purchases
+                purchases:purchases
             }
             
         );
