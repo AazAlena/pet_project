@@ -19,7 +19,6 @@
 }
 
 .dpqt{
-   
     font-size: 18px;
     margin:10px 0px;
 }
@@ -28,5 +27,17 @@
 @media (max-width: 768px) { 
     .markup{
         display:none;
+    }
+}
+
+hr{
+    color:black;
+    opacity:1;
+}
+
+@media (max-width: 768px) { 
+    .print_item_col_or_row{
+        display: flex;
+        flex-direction: column;
     }
 }
