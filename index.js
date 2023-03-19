@@ -16,8 +16,8 @@ app.listen(port, function(){
 
 popular=[
     {
-        "img":"assets/Subscription_1.webp",
-        "name": "Harvest Box",
+        "img":"assets/Subscription_1.jpg",
+        "name": "Strawberries",
         "price": "$55.00",
         "type": "popular",
         "1full_description":faker.commerce.productDescription(),
@@ -26,8 +26,8 @@ popular=[
         "buy": `Not bought`
     },
     {
-        "img":"assets/Subscription_2.webp",
-        "name":"Flower Share",
+        "img":"assets/Subscription_2.jpg",
+        "name":"Grapes",
         "price": "$55.00",
         "type": "popular",
         "1full_description": faker.commerce.productDescription(),
@@ -37,8 +37,8 @@ popular=[
 
     },
     {
-        "img":"assets/Subscription_3.webp",
-        "name":"Culture Club",
+        "img":"assets/Subscription_3.jpg",
+        "name":"Tangerines",
         "price": "$55.00",
         "type": "popular",
         "1full_description": faker.commerce.productDescription(),

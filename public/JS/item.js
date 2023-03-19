@@ -40,9 +40,15 @@ continue_shopping_in_card.addEventListener(`click`, function(){
     sidebar.classList.add(`hidden`);
 })
 
+let btn_opem_close = document.querySelector(`.btn_opem_close`);
 let open_close = document.querySelector(`.open_close`);
 let sp_p_in_soplist = document.querySelector(`#sp_p_in_soplist`);
 open_close.addEventListener(`click`, function(){
     sp_p_in_soplist.classList.toggle(`d-none`);
+    if (btn_opem_close.innerHTML == "▲"){
+        btn_opem_close.innerHTML = "▼";
+    }else{
+        btn_opem_close.innerHTML = "▲"
+    }
 })
 

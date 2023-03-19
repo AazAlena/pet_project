@@ -6,12 +6,15 @@
     border: none;
     color:black;
     background-color: green;
+    width: 160px;
+    height: 40px;
+    margin:10px;
 }
 
 .continue_shopping{
     color:gray;
     font-size: 20px;
-    margin:20px 0px;
+    margin:15px 0px;
 }
 .continue_shopping:hover{
     text-decoration: none;

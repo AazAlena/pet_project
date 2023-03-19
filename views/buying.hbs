@@ -48,7 +48,7 @@
     <main class="container">
         <h5>В корзину добавлен продукт {{item1.name}}</h5>
         <h1 style="margin: 30px 0px;">Shopping cart</h1>
-        <a class="continue_shopping" >Continue shopping</a>
+        <a class="continue_shopping" href="http://localhost:3001/">Continue shopping</a>
         <div class="col" style="margin: 20px 0px 0px 0px;">
             <div class="row markup">
                 <div class="col dpqt" style="flex-basis:60%;text-align:left">Description</div>
@@ -66,7 +66,7 @@
             <div class="row print_item_col_or_row" style="margin: 20px 0px">
                 <div class="col dpqt" style="flex-basis:60%; text-align:left">
                     <div class="row">
-                        <div style="flex-basis:25%;"><img src="{{this.img}}" alt="{{this.name}}" style="width:100%"></div>
+                        <div style="flex-basis:30%;"><img src="{{this.img}}" alt="{{this.name}}" style="width:100%"></div>
                         <div class="col" style="flex-basis:10%;">
                             <p style="font-weight: 500; font-size: 24px;this.name}}">{{this.name}}</p>
                             <p>Pickup every 2 Weeks</p>
@@ -93,11 +93,11 @@
             <hr>
             {{/each}}
         </div>
-        <div class="row" style="font-weight: 500; font-size: 18px;">Payment: ${{price1}}</div>
-
-        <button class="button_pay">CHECKOUT</button>
-        <a href="http://localhost:3001/">Назад</a>
-
+        <div class="col" style="text-align: end;">
+            <div class="col" style="font-weight: 400; font-size: 35px; margin:10px">Payment: ${{price1}}</div>
+            <button class="button_pay">CHECKOUT</button>
+            <div class="col"><a href="http://localhost:3001/">Назад</a></div>
+        </div>
         <div class="paying d-none">Какая-нибудь хрпнь для оплаты. Форма. лялял тополяяяя</div>
     </main>
 </body>

@@ -96,14 +96,7 @@
                     </div>
                     <h2 style="margin:20px 0px">{{item1.name}}</h2>
                     <p style="margin:20px 0px">{{item1.price}}</p>
-                    {{!-- <form action="/buying" method="post">
-
-                        <a href="#" onclick="parentNode.submit();">
-                            <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
-                        </a>
-                        <input type="hidden" name="id" class="row form-control name" placeholder="id" value="{{id}}">
-                        <input type="hidden" name="type" class="row form-control name" placeholder="type" value="{{type}}">
-                    </form> --}}
+                    
                     <button id="ad_re_to_card" class="to_cart" style="margin:20px 0px">ADD TO CART</button>
                     
                     <hr class="hr2" style="margin:20px 0px">
@@ -119,7 +112,7 @@
             <h4>Another items</h4>
             <div class="row row-cols-lg-6 row-cols-3 cont_for_item" >
                 {{#each another}}
-                <a href="/item?i={{this.type}}&id={{@index}}">
+                {{!-- <a href="/item?i={{this.type}}&id={{@index}}">
                     <div class="col card" >
                         <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
                         <div class="card-body">
@@ -127,7 +120,22 @@
                             <p class="">{{this.price}}</p>   
                         </div>
                     </div>
-                </a>
+                </a> --}}
+                <form action="/item" method="post">
+                    <a href="#" onclick="parentNode.submit();">
+                        
+                        <div class="col card">
+                            <img src="{{this.img}}" class="card-img-top" alt="Изображение {{this.name}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.name}}</h5>
+                                <p class="">{{this.price}}</p>   
+                            </div>
+                        </div>
+                    </a>
+                    <input type="hidden" name="type" value="{{this.type}}">
+                    <input type="hidden" name="id" value="{{@index}}">
+                </form>
+                
                 {{/each}}
             </div>
        
