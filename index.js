@@ -99,7 +99,9 @@ app.get('/', function (req, res) {
     res.render(`index`,
     {
         popular:popular,
-        tea_and_honey:tea_and_honey
+        tea_and_honey:tea_and_honey,
+        host:host,
+        port:port
     }
     )
 })
@@ -148,7 +150,9 @@ app.post('/item', function (req, res) {
                 another:another,
                 type:type,
                 
-                purchases:purchases
+                purchases:purchases,
+                host:host,
+                port:port
             }
             
         );
@@ -168,7 +172,9 @@ app.get('/sect', function (req, res) {
     {
         what_is_ch: what_is_ch,
         popular:popular,
-        tea_and_honey:tea_and_honey
+        tea_and_honey:tea_and_honey,
+        host:host,
+        port:port
     }
     )
     // 4 ★  ☆☆
@@ -202,7 +208,9 @@ app.get('/buying', function (req, res) {
             id:id,
             type:type,
             purchases:purchases,
-            price1:price1
+            price1:price1,
+            host:host,
+            port:port
         }
             
     );
@@ -212,7 +220,9 @@ app.get('/admin', function (req, res) {
 
     res.render(`admin`, {
         popular:popular,
-        tea_and_honey:tea_and_honey
+        tea_and_honey:tea_and_honey,
+        host:host,
+        port:port
     })
 })
 
