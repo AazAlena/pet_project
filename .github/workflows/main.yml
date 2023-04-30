@@ -20,20 +20,18 @@ jobs:
         with:
           # node-version: ${{ matrix.node-version }}
           node-version: 20.x
-      - run: npm ci
+      - name: Install modules
+        run: npm ci
       # - run: npm run build --if-present
-      - run: npm test
-
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run remote commands
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: "194.87.147.109"
-        username: "aaz"
-        key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
-        port: 22
-        script: |
-          whoami
-          ls -al
+      - name: Run test
+        run: npm test
+      - name: Run remote commands
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: "194.87.147.109"
+          username: "aaz"
+          key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            whoami
+            ls -al
