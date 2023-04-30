@@ -1,6 +1,8 @@
 let express = require(`express`);
 let app = express();
-let host = "194.87.147.109"
+// let host = "194.87.147.109"
+
+let host = "localhost"
 let port = 3001;
 const hbs = require('hbs');
 app.set('views', 'views');
