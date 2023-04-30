@@ -12,9 +12,9 @@
     <!-- <meta http-equiv="refresh" content="5"> -->
 </head>
 <body>
-    <header>
+    <header class="">
         <nav class="container navbar navbar-expand-lg navbar-light my_for_navbar">
-            <a class="navbar-brand" href="http://{{host}}:{{port}}/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
+            <a class="navbar-brand" href="http://{{host}}:{{port}}/#" ><img src="assets/TEC_new_logo.avif" style="width: 70px;" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,16 +22,16 @@
                 <ul class="navbar-nav">
                 <li class="main nav-item ">
                     {{!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                    <a class="nav-link" href="http://{{host}}:{{port}}">SHOP</a>
+                    <a class="nav-link" href="http://{{host}}:{{port}}/">SHOP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Subscriptions</a>
+                    <a class="nav-link" href="/sect?type=popular">Popular</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pantry</a>
+                    <a class="nav-link" href="/sect?type=tea_and_honey">Tea and honey</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Merch</a>
+                    <a class="nav-link" href="/sect?type=merch">Merch</a>
                 </li>
                 <li class="nav-item">
                      <a class="nav-link" style="color:red; font-weight: 500; font-size: large;" href="/admin">Admin</a>
