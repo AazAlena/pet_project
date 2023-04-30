@@ -1,5 +1,6 @@
 let express = require(`express`);
 let app = express();
+let host = "localhost"
 let port = 3001;
 const hbs = require('hbs');
 app.set('views', 'views');
@@ -11,7 +12,7 @@ let { faker } = require(`@faker-js/faker`);
 
 
 app.listen(port, function(){
-    console.log(`Сервер запущен: http://localhost:${port}`)
+    console.log(`Сервер запущен: http://${host}:${port}`)
 })
 
 popular=[

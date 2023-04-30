@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav class="container navbar navbar-expand-lg navbar-light my_for_navbar">
-            <a class="navbar-brand" href="http://localhost:3001/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
+            <a class="navbar-brand" href="http://${host}:${port}/#" ><img src="assets/TEC_new_logo.avif" style="width: 80px;" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +22,7 @@
                 <ul class="navbar-nav">
                 <li class="main nav-item ">
                     {{!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                    <a class="nav-link" href="http://localhost:3001">SHOP</a>
+                    <a class="nav-link" href="http://${host}:${port}">SHOP</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Subscriptions</a>
@@ -93,11 +93,19 @@
             <hr>
             {{/each}}
         </div>
+<<<<<<< HEAD
         <div class="col" style="text-align: end;">
             <div class="col" style="font-weight: 400; font-size: 35px; margin:10px">Payment: ${{price1}}</div>
             <button class="button_pay">CHECKOUT</button>
             <div class="col"><a href="http://localhost:3001/">Назад</a></div>
         </div>
+=======
+        <div class="row" style="font-weight: 500; font-size: 18px;">Payment: ${{price1}}</div>
+
+        <button class="button_pay">CHECKOUT</button>
+        <a href="http://${host}:${port}/">Назад</a>
+
+>>>>>>> 068545f457c6a0c43f9888658adf711c9742e936
         <div class="paying d-none">Какая-нибудь хрпнь для оплаты. Форма. лялял тополяяяя</div>
     </main>
 </body>
