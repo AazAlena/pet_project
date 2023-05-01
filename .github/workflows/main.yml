@@ -1,0 +1,61 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - 'dev/**'
+      - main
+  # pull_request:
+  #   branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repositary code
+        uses: actions/checkout@v3
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - name: Install modules
+        run: npm ci
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Build docker image
+        uses: appleboy/ssh-action@v0.1.10
+        env:
+          BRANCH: "${{ github.ref_name }}"
+          REPO: "${{ github.repository }}"
+        with:
+          host: ${{ secrets.ZEUS_HOST }}
+          username: ${{ secrets.ZEUS_USER }}
+          key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
+          port: 22
+          envs: BRANCH, REPO, REPO_URL
+          script: |
+            TMP_DIR=`mktemp -d` && cd $TMP_DIR 
+            git clone --branch ${BRANCH} --single-branch https://github.com/${REPO} .
+            docker build -t ${REPO##*/}:${BRANCH##*/} .
+            rm -rf $TMP_DIR
+      - name: Run docker image
+        uses: appleboy/ssh-action@v0.1.10
+        env:
+          BRANCH: "${{ github.ref_name }}"
+          REPO: "${{ github.repository }}"
+        with:
+          host: ${{ secrets.ZEUS_HOST }}
+          username: ${{ secrets.ZEUS_USER }}
+          key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
+          port: 22
+          envs: BRANCH, REPO
+          script: |
+            docker stop ${BRANCH##*/}
+            if [ "${BRANCH##*/}" == "main" ];
+            then
+              docker run -d --rm --name ${BRANCH##*/} -p 8080:3001 ${REPO##*/}:${BRANCH##*/}
+            else
+              docker run -d --rm --name ${BRANCH##*/} -p 3001:3001 ${REPO##*/}:${BRANCH##*/}
+            fi
