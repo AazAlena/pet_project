@@ -37,6 +37,7 @@ jobs:
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd `mktemp -d`
-            git clone --branch ${GITHUB_REF##*/} --single-branch https://github.com/AazAlena/pet_project.git .
-            docker build -t pet_project:${GITHUB_REF##*/} .
+            echo "dddd = ${GITHUB_REF_NAME}"
+  # cd `mktemp -d`
+  # git clone --branch ${GITHUB_REF##*/} --single-branch https://github.com/AazAlena/pet_project.git .
+  # docker build -t pet_project:${GITHUB_REF##*/} .
