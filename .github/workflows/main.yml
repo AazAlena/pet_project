@@ -29,22 +29,33 @@ jobs:
     runs-on: ubuntu-latest
     # needs: test
     steps:
-      - name: test
-        run: |
-          echo "GITHUB_REF_NAME = $GITHUB_REF_NAME ddd ${{ github.ref_name }}"
       - name: Build docker image
         uses: appleboy/ssh-action@v0.1.10
         env:
           BRANCH: "${{ github.ref_name }}"
-          VAR1: "fffffff"
+          REPO: "${{ github.repository }}"
         with:
           host: ${{ secrets.ZEUS_HOST }}
           username: ${{ secrets.ZEUS_USER }}
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
-          envs: BRANCH, VAR1
+          envs: BRANCH,REPO
           script: |
-            echo "dddd = $BRANCH fqqq $VAR1"
-            cd `mktemp -d`
+            TMP_DIR=`mktemp -d` && cd $TMP_DIR 
             git clone --branch $BRANCH --single-branch https://github.com/AazAlena/pet_project.git .
             docker build -t pet_project:$BRANCH .
+            rm -rf $TMP_DIR
+            echo "REPO = $REPO"
+      - name: Run docker image
+        uses: appleboy/ssh-action@v0.1.10
+        env:
+          BRANCH: "${{ github.ref_name }}"
+          REPO: "${{ github.repository }}"
+        with:
+          host: ${{ secrets.ZEUS_HOST }}
+          username: ${{ secrets.ZEUS_USER }}
+          key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
+          port: 22
+          envs: BRANCH, REPO
+          script: |
+            docker run --rm --name dddd -p 3001:3001 pet_project:$BRANCH   
