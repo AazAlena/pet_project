@@ -38,6 +38,7 @@ jobs:
           username: ${{ secrets.ZEUS_USER }}
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
+          envs: BRANCH
           script: |
             echo "dddd = $BRANCH"
             cd `mktemp -d`
