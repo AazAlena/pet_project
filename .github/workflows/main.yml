@@ -39,13 +39,12 @@ jobs:
           username: ${{ secrets.ZEUS_USER }}
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
-          envs: BRANCH,REPO
+          envs: BRANCH, REPO
           script: |
             TMP_DIR=`mktemp -d` && cd $TMP_DIR 
-            git clone --branch $BRANCH --single-branch https://github.com/AazAlena/pet_project.git .
-            docker build -t pet_project:$BRANCH .
+            git clone --branch ${BRANCH} --single-branch https://github.com/AazAlena/pet_project.git .
+            docker build -t ${REPO##*/}:${BRANCH} .
             rm -rf $TMP_DIR
-            echo "REPO = $REPO"
       - name: Run docker image
         uses: appleboy/ssh-action@v0.1.10
         env:
@@ -58,4 +57,5 @@ jobs:
           port: 22
           envs: BRANCH, REPO
           script: |
-            docker run --rm --name dddd -p 3001:3001 pet_project:$BRANCH   
+            docker stop ${BRANCH}
+            docker run -d --rm --name ${BRANCH} -p 3001:3001 ${REPO##*/}:${BRANCH}
