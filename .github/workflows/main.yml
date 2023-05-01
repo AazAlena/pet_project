@@ -33,14 +33,15 @@ jobs:
         uses: appleboy/ssh-action@v0.1.10
         env:
           BRANCH: ${GITHUB_REF_NAME}
+          VAR1: "fffffff"
         with:
           host: ${{ secrets.ZEUS_HOST }}
           username: ${{ secrets.ZEUS_USER }}
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
-          envs: BRANCH
+          envs: BRANCH, VAR1
           script: |
-            echo "dddd = $BRANCH"
+            echo "dddd = $BRANCH ffffff $VAR1"
             cd `mktemp -d`
             git clone --branch $BRANCH --single-branch https://github.com/AazAlena/pet_project.git .
             docker build -t pet_project:$BRANCH .
