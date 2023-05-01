@@ -2,7 +2,8 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ github_actions ]
+    branches:
+      - 'dev/**'
   # pull_request:
   #   branches: [ main ]
 
@@ -34,16 +35,17 @@ jobs:
         env:
           BRANCH: "${{ github.ref_name }}"
           REPO: "${{ github.repository }}"
+          REPO_URL: "${{ github.repositoryUrl }}"
         with:
           host: ${{ secrets.ZEUS_HOST }}
           username: ${{ secrets.ZEUS_USER }}
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
-          envs: BRANCH, REPO
+          envs: BRANCH, REPO, REPO_URL
           script: |
             TMP_DIR=`mktemp -d` && cd $TMP_DIR 
-            git clone --branch ${BRANCH} --single-branch https://github.com/AazAlena/pet_project.git .
-            docker build -t ${REPO##*/}:${BRANCH} .
+            git clone --branch ${BRANCH} --single-branch ${REPO_URL} .
+            docker build -t ${REPO##*/}:${BRANCH##*/} .
             rm -rf $TMP_DIR
       - name: Run docker image
         uses: appleboy/ssh-action@v0.1.10
@@ -57,5 +59,5 @@ jobs:
           port: 22
           envs: BRANCH, REPO
           script: |
-            docker stop ${BRANCH}
-            docker run -d --rm --name ${BRANCH} -p 3001:3001 ${REPO##*/}:${BRANCH}
+            docker stop ${BRANCH##*/}
+            docker run -d --rm --name ${BRANCH##*/} -p 3001:3001 ${REPO##*/}:${BRANCH##*/}
