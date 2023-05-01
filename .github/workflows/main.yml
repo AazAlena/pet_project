@@ -35,7 +35,7 @@ jobs:
       - name: Build docker image
         uses: appleboy/ssh-action@v0.1.10
         env:
-          BRANCH: "${GITHUB_REF_NAME}"
+          BRANCH: "$GITHUB_REF_NAME"
           VAR1: "fffffff"
         with:
           host: ${{ secrets.ZEUS_HOST }}
