@@ -4,38 +4,31 @@ on:
   push:
     branches:
       - 'dev/**'
+      - main
   # pull_request:
   #   branches: [ main ]
 
 jobs:
-  # test:
-  #   runs-on: ubuntu-latest
-  #   # strategy:
-  #   #   matrix:
-  #   #     node-version: [10.x, 12.x, 14.x, 15.x]
-  #   steps:
-  #     - name: Get repositary code
-  #       uses: actions/checkout@v3
-  #     - name: Use Node.js 20.x
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         # node-version: ${{ matrix.node-version }}
-  #         node-version: 20.x
-  #     - name: Install modules
-  #       run: npm ci
-  #     # - run: npm run build --if-present
-  #     - name: Run test
-  #       run: npm test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repositary code
+        uses: actions/checkout@v3
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - name: Install modules
+        run: npm ci
   deploy:
     runs-on: ubuntu-latest
-    # needs: test
+    needs: test
     steps:
       - name: Build docker image
         uses: appleboy/ssh-action@v0.1.10
         env:
           BRANCH: "${{ github.ref_name }}"
           REPO: "${{ github.repository }}"
-          # REPO_URL: "${{ github.repositoryUrl }}"
         with:
           host: ${{ secrets.ZEUS_HOST }}
           username: ${{ secrets.ZEUS_USER }}
@@ -60,4 +53,9 @@ jobs:
           envs: BRANCH, REPO
           script: |
             docker stop ${BRANCH##*/}
-            docker run -d --rm --name ${BRANCH##*/} -p 3001:3001 ${REPO##*/}:${BRANCH##*/}
+            if [ "${BRANCH##*/}" == "main" ];
+            then
+              docker run -d --rm --name ${BRANCH##*/} -p 8080:3001 ${REPO##*/}:${BRANCH##*/}
+            else
+              docker run -d --rm --name ${BRANCH##*/} -p 3001:3001 ${REPO##*/}:${BRANCH##*/}
+            fi
