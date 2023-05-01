@@ -55,7 +55,7 @@ jobs:
             docker stop ${BRANCH##*/}
             if [ "${BRANCH##*/}" == "main" ];
             then
-              docker run -d --rm --name ${BRANCH##*/} -p 8080:3001 ${REPO##*/}:${BRANCH##*/}
+              docker run -d --rm --name ${BRANCH##*/} -p 8085:3001 ${REPO##*/}:${BRANCH##*/}
             else
               docker run -d --rm --name ${BRANCH##*/} -p 3001:3001 ${REPO##*/}:${BRANCH##*/}
             fi
