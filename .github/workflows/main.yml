@@ -29,6 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     # needs: test
     steps:
+      - name: test
+        run: |
+          echo "GITHUB_REF_NAME = $GITHUB_REF_NAME"
       - name: Build docker image
         uses: appleboy/ssh-action@v0.1.10
         env:
