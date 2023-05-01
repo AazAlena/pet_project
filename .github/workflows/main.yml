@@ -31,11 +31,11 @@ jobs:
     steps:
       - name: test
         run: |
-          echo "GITHUB_REF_NAME = $GITHUB_REF_NAME"
+          echo "GITHUB_REF_NAME = $GITHUB_REF_NAME ddd ${{ github.ref_name }}"
       - name: Build docker image
         uses: appleboy/ssh-action@v0.1.10
         env:
-          BRANCH: "$GITHUB_REF_NAME"
+          BRANCH: "${{ github.ref_name }}"
           VAR1: "fffffff"
         with:
           host: ${{ secrets.ZEUS_HOST }}
@@ -44,7 +44,7 @@ jobs:
           port: 22
           envs: BRANCH, VAR1
           script: |
-            echo "dddd = $BRANCH ffffff $VAR1"
+            echo "dddd = $BRANCH fqqq $VAR1"
             cd `mktemp -d`
             git clone --branch $BRANCH --single-branch https://github.com/AazAlena/pet_project.git .
             docker build -t pet_project:$BRANCH .
