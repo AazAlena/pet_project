@@ -38,5 +38,5 @@ jobs:
           port: 22
           script: |
             cd `mktemp -d`
-            git clone https://github.com/AazAlena/pet_project.git .
-            docker build -t pet_project .
+            git clone --branch ${GITHUB_REF##*/} --single-branch https://github.com/AazAlena/pet_project.git .
+            docker build -t pet_project:${GITHUB_REF##*/} .
