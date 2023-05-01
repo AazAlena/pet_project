@@ -31,14 +31,15 @@ jobs:
     steps:
       - name: Build docker image
         uses: appleboy/ssh-action@v0.1.10
+        env:
+          BRANCH: ${GITHUB_REF_NAME}
         with:
           host: ${{ secrets.ZEUS_HOST }}
           username: ${{ secrets.ZEUS_USER }}
           key: ${{ secrets.ZEUS_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            echo "dddd = ${GITHUB_REF_NAME}"
-            set
-  # cd `mktemp -d`
-  # git clone --branch ${GITHUB_REF##*/} --single-branch https://github.com/AazAlena/pet_project.git .
-  # docker build -t pet_project:${GITHUB_REF##*/} .
+            echo "dddd = $BRANCH"
+            cd `mktemp -d`
+            git clone --branch $BRANCH --single-branch https://github.com/AazAlena/pet_project.git .
+            docker build -t pet_project:$BRANCH .
