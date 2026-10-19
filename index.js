@@ -234,7 +234,7 @@ app.get('/add_item_admin', function (req, res) {
     price = req.query.price;
     type = req.query.type;
     if (type == "tea_and_honey"){
-        itea_and_honey.push(
+        tea_and_honey.push(
             {
                 "img": img,
                 "name": namE,
